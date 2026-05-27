@@ -121,27 +121,74 @@ Copy one of these into Claude after installation:
 /forecast-model-diagnostics "Company name" "FY2026" --currency GBP
 ```
 
-## Use Cases In Plain English
+## End-To-End User Stories
 
-### 1. Board Pack
+Each agent is designed around a real CFO workflow. The core plugin produces the evidence-backed finance artifact; if you have other MCP connectors enabled in Claude, the same conversation can naturally continue into email, Slack, Teams, Drive, SharePoint, calendar, or deck workflows after the finance gates pass.
 
-Use this when you need to explain the cash story to a board or investor group. The workflow can draft the liquidity position, movement, risks, and decisions needed. If you provide a PowerPoint template, the pack can respect locked and editable sections.
+### 1. Board Pack Agent
 
-### 2. Monthly Financial Review
+**User story:** "Before the next board meeting, turn our Round cash position, Xero financials, and open finance risks into a board-ready pack with the decisions we need directors to make."
 
-Use this after month end. With Round only, the workflow gives a treasury review. With Xero connected inside Round, it can add P&L, balance sheet, invoice, AR/AP, and close commentary.
+Use this when you need to explain the cash story to a board or investor group. The workflow can draft the liquidity position, movement, risks, and decisions needed. If you provide a PowerPoint or board-template file, the pack can respect locked and editable sections.
 
-### 3. CFO Cash Brief
+Typical output: board-pack outline, speaker notes, source ledger, QA files, and an editable deck when approved presentation tooling is available.
 
-Use this before a cash meeting. It tells you current cash, account coverage, freshness, visible movement, and decisions. It does not present runway unless the supporting movement or burn evidence exists.
+Useful follow-on MCP connectors: Google Drive, SharePoint, OneDrive, PowerPoint/Presentations, Gmail, Outlook, Slack, Teams, Google Calendar, and Outlook Calendar. Claude can use those connectors to fetch prior decks, save the final pack, draft the send email, or prepare a board-meeting follow-up. The plugin still does not send or share externally without human approval.
 
-### 4. Payment And Payroll Readiness
+### 2. Monthly Financial Review Agent
 
-Use this before a payment or payroll run. It confirms the Round-visible funding baseline, then separates what is ready from what still needs human approval. It does not release money.
+**User story:** "After month end, give me a CFO review memo that explains what changed, why it changed, what needs action, and which numbers still need finance follow-up."
 
-### 5. Forecast And Model Diagnostics
+Use this after month end. With Round only, the workflow gives a treasury review. With Xero connected inside Round, it can add P&L, balance sheet, invoice, AR/AP, working-capital, and close commentary.
+
+Typical output: CFO review memo, variance tables, action list, source ledger, and QA files. It can become a board appendix or email-ready summary when connected to deck or email tools.
+
+Useful follow-on MCP connectors: Google Drive, SharePoint, Gmail, Outlook, Slack, Teams, and calendar connectors. Claude can use those to pull prior-month commentary, save the memo, draft the review email, or schedule follow-up with finance owners.
+
+### 3. CFO Cash Brief Agent
+
+**User story:** "Every weekday at 8:30am, give me a CFO cash brief showing today's cash position, runway/headroom, expected collections, payment/payroll pressure, and any decisions I need to make."
+
+Use this before a cash meeting or as a recurring morning control. It tells you current cash, account coverage, freshness, visible movement, and decisions. It does not present runway unless the supporting movement or burn evidence exists, and it separates expected receipts from confirmed cash.
+
+Typical output: short CFO brief, decisions-today section, source ledger, and QA files. It is usually more useful as an email, Slack, or Teams brief than as a PowerPoint.
+
+Useful follow-on MCP connectors: Gmail, Outlook, Slack, Teams, Google Calendar, and Outlook Calendar. Claude can draft the CFO email, post an approved summary to a finance channel, or schedule the brief cadence when those connectors are available. Human approval should remain the default before any finance brief is sent.
+
+### 4. Payment And Payroll Readiness Agent
+
+**User story:** "Before approving Friday's payment run and payroll funding, tell me whether we have enough cash, what exceptions exist, and what still needs human approval."
+
+Use this before a payment or payroll run. It confirms the Round-visible funding baseline, then separates what is ready from what still needs human approval. It does not release money, approve payments, run payroll, or change beneficiaries.
+
+Typical output: funding-readiness memo, exception table, approval checklist, source ledger, and QA files.
+
+Useful follow-on MCP connectors: Gmail, Outlook, Slack, Teams, Drive, SharePoint, and any approved payroll, AP, or ticketing connector in your Claude environment. Claude can draft the approver note, attach the readiness pack, or create follow-up tasks for unresolved exceptions. The plugin's role remains prepare, verify, and route for review.
+
+### 5. Forecast And Model Diagnostics Agent
+
+**User story:** "Before I send the runway forecast to the board, check whether the model ties to actual cash, Xero actuals, and the stated assumptions."
 
 Use this before a runway number goes to the board. The workflow tests the Round cash baseline, then inspects model assumptions, actuals, formulas, and unresolved risks when files are supplied.
+
+Typical output: diagnostic memo, model issue table, sensitivity notes, source ledger, and QA files. It can become a board appendix slide when presentation tooling is available.
+
+Useful follow-on MCP connectors: Google Drive, Google Sheets, Microsoft Excel, SharePoint, OneDrive, PowerPoint/Presentations, Gmail, Outlook, Slack, and Teams. Claude can fetch the latest model, compare it with prior versions, draft the review note, or prepare board appendix slides when those connectors are connected.
+
+## Delivery And Follow-Through
+
+This plugin is the finance control layer. It verifies the numbers and creates the artifact. Other MCP connectors can then handle the surrounding workflow:
+
+| Connector type | How it helps after the finance gates pass |
+|---|---|
+| Gmail or Outlook | Draft CFO emails, board-send notes, payment-readiness messages, or forecast-review summaries. |
+| Slack or Teams | Post approved briefs, flag blockers, and route exceptions to the finance team. |
+| Google Drive, SharePoint, or OneDrive | Store source files, prior packs, final artifacts, board templates, and model workbooks. |
+| Google Calendar or Outlook Calendar | Run daily cash-brief, month-end, board-cycle, or payment-run cadences. |
+| Sheets, Excel, or model-file connectors | Supply forecast models, variance workpapers, and driver files for diagnostics. |
+| PowerPoint or presentation tooling | Turn board packs and forecast appendices into editable decks. |
+
+Those connectors are not required to run the core Round-backed finance checks. They make the workflows feel complete: prepare the artifact, verify it, draft the message, store it, and route it to the right humans.
 
 ## What The Plugin Will Not Do
 
