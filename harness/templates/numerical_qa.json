@@ -1,0 +1,53 @@
+{
+  "$schema": "../schemas/numerical_qa.schema.json",
+  "schema_version": "1.0",
+  "run_id": "",
+  "hard_status": "BLOCKED",
+  "status_reason": "No displayed numbers reviewed yet.",
+  "reviewed_at": "",
+  "reviewer": "",
+  "displayed_numbers": [
+    {
+      "number_id": "cash.closing_balance",
+      "label": "Closing cash",
+      "displayed_value": "UNRESOLVED",
+      "normalised_value": null,
+      "unit": "currency",
+      "period": "",
+      "entity": "",
+      "currency": "GBP",
+      "source_ref": "round:cash:period",
+      "formula": "",
+      "source_value": null,
+      "component_values": [],
+      "recomputed_value": null,
+      "variance": null,
+      "rounding": {
+        "policy": "nearest_1",
+        "difference": null
+      },
+      "match_type": "exact",
+      "status": "BLOCKED",
+      "unresolved_reason": "Template number has not been recomputed."
+    }
+  ],
+  "reconciliation_checks": [
+    {
+      "check_id": "cash-rollforward",
+      "description": "Opening cash plus net movement equals closing cash.",
+      "source_refs": [
+        "round:cash:period"
+      ],
+      "status": "BLOCKED",
+      "variance": null,
+      "notes": "Template check."
+    }
+  ],
+  "unresolved_numbers": [
+    {
+      "number_id": "cash.closing_balance",
+      "reason": "Template number has not been recomputed.",
+      "blocks_final": true
+    }
+  ]
+}

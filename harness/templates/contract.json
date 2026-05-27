@@ -1,0 +1,66 @@
+{
+  "$schema": "../schemas/contract.schema.json",
+  "schema_version": "1.0",
+  "run_id": "",
+  "workflow": "board_pack",
+  "connector_mode": "round_only",
+  "hard_status": "BLOCKED",
+  "status_reason": "Initial template is not yet scoped.",
+  "requested_by": "",
+  "created_at": "",
+  "entity_scope": [
+    {
+      "entity": "",
+      "legal_entity_id": "",
+      "country": "",
+      "included": true
+    }
+  ],
+  "period": {
+    "primary": "",
+    "comparatives": [],
+    "as_of": "",
+    "timezone": "Europe/London"
+  },
+  "currency": {
+    "presentation": "GBP",
+    "source_currencies": [
+      "GBP"
+    ],
+    "fx_policy": "Use source currency unless contract requires translation."
+  },
+  "rounding": {
+    "policy": "nearest_1",
+    "display_unit": "units",
+    "allowed_difference": 0
+  },
+  "materiality": {
+    "amount": 0,
+    "currency": "GBP",
+    "percentage": 0,
+    "rule": "No unsupported displayed number is immaterial for publication."
+  },
+  "sources_required": [
+    {
+      "source_ref": "round:cash:period",
+      "system": "Round",
+      "required": true,
+      "freshness": "same_day"
+    }
+  ],
+  "output": {
+    "audience": "Board",
+    "artifact_type": "md",
+    "final_filename": "final.md",
+    "template_path": "",
+    "locked_sections": [],
+    "editable_sections": []
+  },
+  "quality_gates": {
+    "numerical_qa_required": true,
+    "narrative_eval_required": true,
+    "cfo_quality_eval_required": true,
+    "max_revision_loops": 3,
+    "final_controller_required": true
+  }
+}

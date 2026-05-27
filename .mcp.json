@@ -1,0 +1,31 @@
+{
+  "mcpServers": {
+    "cfo-quality-harness": {
+      "command": "python3",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/mcp/cfo_quality_harness_server.py",
+        "--plugin-root",
+        "${CLAUDE_PLUGIN_ROOT}"
+      ]
+    },
+    "round-mcp": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://mcp.roundtreasury.com/mcp",
+        "3334",
+        "--host",
+        "127.0.0.1",
+        "--transport",
+        "http-only",
+        "--auth-timeout",
+        "600"
+      ],
+      "env": {
+        "MCP_REMOTE_CONFIG_DIR": "${HOME}/.config/cfo-anthropic-finance-agent-workflows/round-mcp-auth",
+        "PATH": "/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin"
+      }
+    }
+  }
+}

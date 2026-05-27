@@ -1,0 +1,28 @@
+{
+  "$schema": "../schemas/narrative_eval.schema.json",
+  "schema_version": "1.0",
+  "run_id": "",
+  "hard_status": "BLOCKED",
+  "status_reason": "Narrative has not been reviewed.",
+  "reviewed_at": "",
+  "claims": [
+    {
+      "claim_id": "claim-001",
+      "claim_text": "",
+      "supporting_number_ids": [],
+      "source_refs": [],
+      "status": "BLOCKED",
+      "issue": "Template claim has no evidence."
+    }
+  ],
+  "audience_fit": {
+    "audience": "",
+    "status": "BLOCKED",
+    "notes": ""
+  },
+  "evaluator": {
+    "name": "",
+    "signed_off": false,
+    "signed_at": ""
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "ai-heroes-cfo-finance-agent-workflows",
+  "description": "AI Heroes finance workflow plugin for Claude Code and Claude Cowork, focused on CFO-ready Round MCP and optional Xero-through-Round reviews.",
+  "owner": {
+    "name": "AI Heroes",
+    "url": "https://www.ai-heroes.co"
+  },
+  "plugins": [
+    {
+      "name": "cfo-anthropic-finance-agent-workflows",
+      "source": "./",
+      "version": "1.0.0"
+    }
+  ]
+}

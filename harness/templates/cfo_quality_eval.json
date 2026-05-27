@@ -1,0 +1,46 @@
+{
+  "$schema": "../schemas/cfo_quality_eval.schema.json",
+  "schema_version": "1.0",
+  "run_id": "",
+  "hard_status": "BLOCKED",
+  "status_reason": "External CFO quality evaluation has not been completed.",
+  "reviewed_at": "",
+  "reviewer": "",
+  "revision_loop": 0,
+  "scores": {
+    "artifact_quality": {
+      "score": 1,
+      "status": "BLOCKED",
+      "notes": "Template score."
+    },
+    "decision_usefulness": {
+      "score": 1,
+      "status": "BLOCKED",
+      "notes": "Template score."
+    },
+    "board_cfo_tone": {
+      "score": 1,
+      "status": "BLOCKED",
+      "notes": "Template score."
+    },
+    "unsupported_claim_discipline": {
+      "score": 1,
+      "status": "BLOCKED",
+      "notes": "Template score."
+    }
+  },
+  "findings": [
+    {
+      "finding_id": "cfo-quality-001",
+      "area": "artifact_quality",
+      "status": "BLOCKED",
+      "description": "Template finding.",
+      "blocks_final": true
+    }
+  ],
+  "evaluator": {
+    "name": "",
+    "signed_off": false,
+    "signed_at": ""
+  }
+}

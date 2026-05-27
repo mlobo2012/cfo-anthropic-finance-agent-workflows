@@ -1,0 +1,122 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-heroes.co/schemas/cfo-round/source-ledger.schema.json",
+  "title": "CFO Source Ledger",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "run_id",
+    "hard_status",
+    "sources"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "hard_status": {
+      "$ref": "#/$defs/hard_status"
+    },
+    "status_reason": {
+      "type": "string"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "source_ref",
+          "system",
+          "period",
+          "entity",
+          "currency",
+          "extract_path",
+          "source_hash_sha256",
+          "source_as_of",
+          "row_count",
+          "fetched_at",
+          "status"
+        ],
+        "properties": {
+          "source_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "system": {
+            "type": "string",
+            "minLength": 1
+          },
+          "connector": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "period": {
+            "type": "string",
+            "minLength": 1
+          },
+          "entity": {
+            "type": "string",
+            "minLength": 1
+          },
+          "currency": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 3
+          },
+          "extract_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_hash_sha256": {
+            "type": "string"
+          },
+          "source_as_of": {
+            "type": "string"
+          },
+          "row_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "fetched_at": {
+            "type": "string"
+          },
+          "reconciled_to": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "READY",
+              "PARTIAL",
+              "UNRESOLVED"
+            ]
+          },
+          "status_reason": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "open_gaps": {
+      "type": "array"
+    }
+  },
+  "$defs": {
+    "hard_status": {
+      "type": "string",
+      "enum": [
+        "PASS",
+        "BLOCKED"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

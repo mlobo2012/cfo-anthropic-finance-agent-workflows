@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-heroes.co/schemas/cfo-round/numerical-qa.schema.json",
+  "title": "CFO Numerical QA",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "run_id",
+    "hard_status",
+    "displayed_numbers",
+    "unresolved_numbers"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "hard_status": {
+      "$ref": "#/$defs/hard_status"
+    },
+    "status_reason": {
+      "type": "string"
+    },
+    "reviewed_at": {
+      "type": "string"
+    },
+    "reviewer": {
+      "type": "string"
+    },
+    "displayed_numbers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "number_id",
+          "label",
+          "displayed_value",
+          "unit",
+          "period",
+          "entity",
+          "recomputed_value",
+          "variance",
+          "rounding",
+          "match_type",
+          "status"
+        ],
+        "properties": {
+          "number_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1
+          },
+          "displayed_value": {},
+          "normalised_value": {},
+          "unit": {
+            "type": "string",
+            "minLength": 1
+          },
+          "period": {
+            "type": "string",
+            "minLength": 1
+          },
+          "entity": {
+            "type": "string",
+            "minLength": 1
+          },
+          "currency": {
+            "type": "string"
+          },
+          "source_ref": {
+            "type": "string"
+          },
+          "formula": {
+            "type": "string"
+          },
+          "source_value": {},
+          "component_values": {
+            "type": "array"
+          },
+          "recomputed_value": {},
+          "variance": {},
+          "rounding": {
+            "type": "object",
+            "required": [
+              "policy",
+              "difference"
+            ],
+            "properties": {
+              "policy": {
+                "type": "string"
+              },
+              "difference": {}
+            },
+            "additionalProperties": true
+          },
+          "match_type": {
+            "type": "string",
+            "enum": [
+              "exact",
+              "documented_rounding",
+              "formula_recompute"
+            ]
+          },
+          "status": {
+            "$ref": "#/$defs/hard_status"
+          },
+          "unresolved_reason": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "reconciliation_checks": {
+      "type": "array"
+    },
+    "unresolved_numbers": {
+      "type": "array"
+    }
+  },
+  "$defs": {
+    "hard_status": {
+      "type": "string",
+      "enum": [
+        "PASS",
+        "BLOCKED"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

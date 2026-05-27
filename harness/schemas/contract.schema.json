@@ -1,0 +1,256 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-heroes.co/schemas/cfo-round/contract.schema.json",
+  "title": "CFO Workflow Contract",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "run_id",
+    "workflow",
+    "connector_mode",
+    "hard_status",
+    "entity_scope",
+    "period",
+    "currency",
+    "rounding",
+    "sources_required",
+    "output",
+    "quality_gates"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "workflow": {
+      "type": "string",
+      "enum": [
+        "board_pack",
+        "monthly_financial_review",
+        "cfo_cash_brief",
+        "payment_payroll_readiness",
+        "forecast_model_diagnostics"
+      ]
+    },
+    "connector_mode": {
+      "type": "string",
+      "enum": [
+        "round_only",
+        "round_with_xero"
+      ]
+    },
+    "hard_status": {
+      "$ref": "#/$defs/hard_status"
+    },
+    "status_reason": {
+      "type": "string"
+    },
+    "entity_scope": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "entity",
+          "included"
+        ],
+        "properties": {
+          "entity": {
+            "type": "string",
+            "minLength": 1
+          },
+          "legal_entity_id": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "included": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "period": {
+      "type": "object",
+      "required": [
+        "primary"
+      ],
+      "properties": {
+        "primary": {
+          "type": "string"
+        },
+        "comparatives": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "as_of": {
+          "type": "string"
+        },
+        "timezone": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "currency": {
+      "type": "object",
+      "required": [
+        "presentation"
+      ],
+      "properties": {
+        "presentation": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 3
+        },
+        "source_currencies": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 3
+          }
+        },
+        "fx_policy": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "rounding": {
+      "type": "object",
+      "required": [
+        "policy",
+        "allowed_difference"
+      ],
+      "properties": {
+        "policy": {
+          "type": "string"
+        },
+        "display_unit": {
+          "type": "string"
+        },
+        "allowed_difference": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": true
+    },
+    "sources_required": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "source_ref",
+          "system",
+          "required"
+        ],
+        "properties": {
+          "source_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "system": {
+            "type": "string",
+            "minLength": 1
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "freshness": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "output": {
+      "type": "object",
+      "required": [
+        "audience",
+        "artifact_type",
+        "final_filename"
+      ],
+      "properties": {
+        "audience": {
+          "type": "string"
+        },
+        "artifact_type": {
+          "type": "string",
+          "enum": [
+            "md",
+            "pptx",
+            "pdf",
+            "json",
+            "multiple"
+          ]
+        },
+        "final_filename": {
+          "type": "string"
+        },
+        "template_path": {
+          "type": "string"
+        },
+        "locked_sections": {
+          "type": "array"
+        },
+        "editable_sections": {
+          "type": "array"
+        }
+      },
+      "additionalProperties": true
+    },
+    "quality_gates": {
+      "type": "object",
+      "required": [
+        "numerical_qa_required",
+        "narrative_eval_required",
+        "cfo_quality_eval_required",
+        "max_revision_loops",
+        "final_controller_required"
+      ],
+      "properties": {
+        "numerical_qa_required": {
+          "type": "boolean",
+          "const": true
+        },
+        "narrative_eval_required": {
+          "type": "boolean",
+          "const": true
+        },
+        "cfo_quality_eval_required": {
+          "type": "boolean",
+          "const": true
+        },
+        "max_revision_loops": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3
+        },
+        "final_controller_required": {
+          "type": "boolean",
+          "const": true
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "$defs": {
+    "hard_status": {
+      "type": "string",
+      "enum": [
+        "PASS",
+        "REVISE",
+        "BLOCKED"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

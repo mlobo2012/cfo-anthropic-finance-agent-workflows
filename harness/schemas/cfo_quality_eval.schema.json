@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-heroes.co/schemas/cfo-round/cfo-quality-eval.schema.json",
+  "title": "External CFO Quality Evaluation",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "run_id",
+    "hard_status",
+    "reviewed_at",
+    "reviewer",
+    "revision_loop",
+    "scores",
+    "findings",
+    "evaluator"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "hard_status": {
+      "$ref": "#/$defs/hard_status"
+    },
+    "status_reason": {
+      "type": "string"
+    },
+    "reviewed_at": {
+      "type": "string"
+    },
+    "reviewer": {
+      "type": "string"
+    },
+    "revision_loop": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 3
+    },
+    "scores": {
+      "type": "object",
+      "required": [
+        "artifact_quality",
+        "decision_usefulness",
+        "board_cfo_tone",
+        "unsupported_claim_discipline"
+      ],
+      "properties": {
+        "artifact_quality": {
+          "$ref": "#/$defs/score"
+        },
+        "decision_usefulness": {
+          "$ref": "#/$defs/score"
+        },
+        "board_cfo_tone": {
+          "$ref": "#/$defs/score"
+        },
+        "unsupported_claim_discipline": {
+          "$ref": "#/$defs/score"
+        }
+      },
+      "additionalProperties": true
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "finding_id",
+          "area",
+          "status",
+          "blocks_final"
+        ],
+        "properties": {
+          "finding_id": {
+            "type": "string"
+          },
+          "area": {
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/$defs/hard_status"
+          },
+          "description": {
+            "type": "string"
+          },
+          "blocks_final": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "evaluator": {
+      "type": "object",
+      "required": [
+        "name",
+        "signed_off"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "signed_off": {
+          "type": "boolean"
+        },
+        "signed_at": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "$defs": {
+    "hard_status": {
+      "type": "string",
+      "enum": [
+        "PASS",
+        "REVISE",
+        "BLOCKED"
+      ]
+    },
+    "score": {
+      "type": "object",
+      "required": [
+        "score",
+        "status"
+      ],
+      "properties": {
+        "score": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "status": {
+          "$ref": "#/$defs/hard_status"
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

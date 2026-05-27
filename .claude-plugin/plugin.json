@@ -1,0 +1,23 @@
+{
+  "name": "cfo-anthropic-finance-agent-workflows",
+  "description": "CFO-grade Claude Code and Claude Cowork workflows for finance leaders using Round MCP, with optional Xero data through Round and fail-closed numerical QA.",
+  "version": "1.0.0",
+  "author": {
+    "name": "AI Heroes",
+    "url": "https://www.ai-heroes.co"
+  },
+  "homepage": "https://github.com/mlobo2012/cfo-anthropic-finance-agent-workflows",
+  "repository": "https://github.com/mlobo2012/cfo-anthropic-finance-agent-workflows",
+  "license": "Apache-2.0 WITH Commons-Clause",
+  "keywords": [
+    "claude-code",
+    "claude-cowork",
+    "finance",
+    "cfo",
+    "round-mcp",
+    "xero",
+    "board-pack",
+    "cash-management"
+  ],
+  "skills": "skills"
+}
